@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OptimusFlow Automation</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #10131a;
+      color: #e0e6f0;
+      min-height: 100vh;
+      scroll-behavior: smooth;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 20px 30px 20px;
+      text-align: center;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin-bottom: 10px;
+      animation: fadeInDown 1s;
+    }
+    .logo img {
+      height: 70px;
+      width: auto;
+      display: block;
+    }
+    .logo-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #00ffe7;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px #00ffe7aa;
+    }
+    .subtitle {
+      font-size: 1.3rem;
+      color: #7ee0ff;
+      margin-bottom: 40px;
+      letter-spacing: 1px;
+      animation: fadeInDown 1.2s;
+    }
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: #fff;
+      animation: fadeInUp 1.1s;
+    }
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      color: #b0b8c9;
+      animation: fadeInUp 1.2s;
+    }
+    .cta-btn {
+      background: linear-gradient(90deg, #00ffe7 0%, #007cf0 100%);
+      color: #10131a;
+      padding: 16px 40px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      box-shadow: 0 4px 24px #00ffe733;
+      margin-top: 10px;
+      display: inline-block;
+      animation: fadeInUp 1.3s;
+    }
+    .cta-btn:hover {
+      background: linear-gradient(90deg, #007cf0 0%, #00ffe7 100%);
+      color: #fff;
+      box-shadow: 0 6px 32px #00ffe744;
+    }
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 60px;
+      margin-bottom: 60px;
+      animation: fadeIn 1.5s;
+    }
+    .feature {
+      background: #181c27;
+      border-radius: 18px;
+      padding: 30px 20px;
+      width: 260px;
+      box-shadow: 0 2px 12px #00ffe71a;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: fadeInUp 1.6s;
+    }
+    .feature:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 6px 24px #00ffe744;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+      color: #00ffe7;
+      text-shadow: 0 0 8px #00ffe7aa;
+      animation: pulse 2s infinite;
+    }
+    /* Sección Detalle */
+    .about-section {
+      background: #181c27;
+      border-radius: 18px;
+      max-width: 900px;
+      margin: 60px auto 60px auto;
+      padding: 40px 30px 30px 30px;
+      box-shadow: 0 2px 12px #00ffe71a;
+      text-align: left;
+      animation: fadeIn 2s;
+    }
+    .about-section h2 {
+      color: #00ffe7;
+      margin-bottom: 18px;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .about-text {
+      flex: 1 1 320px;
+      min-width: 280px;
+      color: #b0b8c9;
+      font-size: 1.08rem;
+      margin-bottom: 20px;
+    }
+    .about-examples {
+      flex: 1 1 320px;
+      min-width: 280px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      align-items: center;
+    }
+    .workflow-img {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px #00ffe71a;
+      margin-bottom: 8px;
+      background: #23273a;
+      object-fit: cover;
+    }
+    .about-logo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .about-logo img {
+      height: 50px;
+      width: auto;
+      display: block;
+    }
+    .code-block {
+      background: #23273a;
+      color: #00ffe7;
+      font-family: 'Fira Mono', 'Consolas', monospace;
+      font-size: 0.98rem;
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 10px;
+      overflow-x: auto;
+      box-shadow: 0 2px 12px #00ffe71a;
+    }
+    /* Nueva sección Te llamamos */
+    .callback-section {
+      background: linear-gradient(90deg, #23273a 60%, #1a1d2b 100%);
+      border-radius: 18px;
+      max-width: 600px;
+      margin: 60px auto 60px auto;
+      padding: 40px 30px 30px 30px;
+      box-shadow: 0 2px 12px #00ffe71a;
+      text-align: center;
+      animation: fadeIn 2s;
+    }
+    .callback-section h2 {
+      color: #00ffe7;
+      margin-bottom: 18px;
+      font-size: 1.4rem;
+    }
+    .callback-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .callback-form input[type="tel"] {
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      background: #181c27;
+      color: #e0e6f0;
+      font-size: 1rem;
+      width: 220px;
+      transition: background 0.2s;
+      text-align: center;
+    }
+    .callback-form input[type="tel"]:focus {
+      background: #23273a;
+      outline: 2px solid #00ffe7;
+    }
+    .callback-form button {
+      background: linear-gradient(90deg, #00ffe7 0%, #007cf0 100%);
+      color: #10131a;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .callback-form button:hover {
+      background: linear-gradient(90deg, #007cf0 0%, #00ffe7 100%);
+      color: #fff;
+    }
+    .callback-success {
+      color: #00ffe7;
+      margin-top: 10px;
+      font-size: 1rem;
+      display: none;
+    }
+    .callback-section p {
+      color: #b0b8c9;
+      font-size: 1.05rem;
+      margin-top: 10px;
+    }
+    /* Contact Form */
+    .contact-section {
+      background: #181c27;
+      border-radius: 18px;
+      max-width: 500px;
+      margin: 0 auto 50px auto;
+      padding: 40px 30px 30px 30px;
+      box-shadow: 0 2px 12px #00ffe71a;
+      animation: fadeIn 2s;
+    }
+    .contact-section h2 {
+      color: #00ffe7;
+      margin-bottom: 18px;
+      font-size: 1.5rem;
+    }
+    .contact-section form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .contact-section input,
+    .contact-section textarea {
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      background: #23273a;
+      color: #e0e6f0;
+      font-size: 1rem;
+      resize: none;
+      transition: background 0.2s;
+    }
+    .contact-section input:focus,
+    .contact-section textarea:focus {
+      background: #2a2f45;
+      outline: 2px solid #00ffe7;
+    }
+    .contact-section button {
+      background: linear-gradient(90deg, #00ffe7 0%, #007cf0 100%);
+      color: #10131a;
+      padding: 12px 0;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      margin-top: 8px;
+    }
+    .contact-section button:hover {
+      background: linear-gradient(90deg, #007cf0 0%, #00ffe7 100%);
+      color: #fff;
+    }
+    .success-message {
+      color: #00ffe7;
+      margin-top: 10px;
+      font-size: 1rem;
+      display: none;
+    }
+    /* Footer */
+    footer {
+      background: #181c27;
+      color: #7ee0ff;
+      text-align: center;
+      padding: 24px 10px 10px 10px;
+      border-top: 1px solid #23273a;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+    .social-links {
+      margin: 10px 0 0 0;
+    }
+    .social-links a {
+      color: #00ffe7;
+      margin: 0 10px;
+      font-size: 1.4rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .social-links a:hover {
+      color: #007cf0;
+    }
+    /* Animaciones */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeIn {
+      from { opacity: 0;}
+      to { opacity: 1;}
+    }
+    @keyframes pulse {
+      0%, 100% { text-shadow: 0 0 8px #00ffe7aa;}
+      50% { text-shadow: 0 0 24px #00ffe7;}
+    }
+    @media (max-width: 900px) {
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
+      .feature {
+        width: 90%;
+      }
+      .container {
+        padding: 30px 5px 20px 5px;
+      }
+      .about-content {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .about-section {
+        padding: 30px 10px 20px 10px;
+      }
+      .callback-section {
+        padding: 30px 10px 20px 10px;
+      }
+      .contact-section {
+        padding: 30px 10px 20px 10px;
+      }
+      .logo-title {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+	 <div class="logo" style="justify-content:center; margin-bottom:32px;">
+	  <img src="OptimusLogo.png" alt="OptimusFlow Logo" style="height:140px; max-width:340px; width:auto; display:block;">
+	</div>
+
+    <div class="subtitle">Automatización Inteligente para Empresas Modernas</div>
+		<div class="logo" style="gap:28px; margin-bottom:24px;">
+	 
+	  <span class="logo-title" style="font-size:2.8rem;">OptimusFlow</span>
+	</div>
+    <h1>Impulsa tu negocio con automatizaciones basadas en IA</h1>
+    <p>
+      Descubre cómo la inteligencia artificial puede transformar tus procesos, ahorrar tiempo y maximizar la eficiencia de tu empresa.<br>
+      Automatiza tareas repetitivas, toma decisiones inteligentes y lleva tu negocio al siguiente nivel.
+    </p>
+    <a href="#contacto" class="cta-btn">Solicita una demo</a>
+
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">🤖</div>
+        <h3>Automatización de Procesos</h3>
+        <p>Optimiza tareas rutinarias y reduce errores con flujos inteligentes y personalizados.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🔗</div>
+        <h3>Integración Total</h3>
+        <p>Conecta tus herramientas favoritas y centraliza la gestión de tu empresa en un solo lugar.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📈</div>
+        <h3>Análisis Predictivo</h3>
+        <p>Anticipa tendencias y toma decisiones basadas en datos gracias a la IA avanzada.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🛡️</div>
+        <h3>Seguridad de Datos</h3>
+        <p>Tus datos siempre protegidos con los más altos estándares de seguridad y privacidad.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-section" id="about">
+    <div class="about-logo">
+      <img src="OptimusLogo.png" alt="OptimusFlow Logo">
+    </div>
+    <h2>¿Qué hace OptimusFlow?</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>
+          En <b>OptimusFlow</b> diseñamos, implementamos y gestionamos soluciones de automatización inteligente para empresas de todos los sectores. Nuestro equipo combina inteligencia artificial, integración de sistemas y desarrollo a medida para que puedas:
+        </p>
+        <ul style="color:#7ee0ff; margin-left: 18px;">
+          <li>Automatizar procesos administrativos y operativos</li>
+          <li>Integrar plataformas y aplicaciones (ERP, CRM, email, etc.)</li>
+          <li>Detectar patrones y anticipar necesidades con IA</li>
+          <li>Reducir errores y aumentar la productividad</li>
+        </ul>
+        <p>
+          Creamos workflows personalizados que se adaptan a tus necesidades. Aquí tienes algunos ejemplos:
+        </p>
+      </div>
+      <div class="about-examples">
+        <div>
+          <img src="Home_ITO_Ps_5a5aac3fda.webp" alt="Workflow ejemplo 1" class="workflow-img">
+          <div style="color:#7ee0ff; font-size:0.98rem; text-align:center;">Ejemplo: Automatización de procesos internos</div>
+        </div>
+        <div>
+          <img src="Sec_O_Ps_light_2_1eea5b5172.webp" alt="Workflow ejemplo 2" class="workflow-img">
+          <div style="color:#7ee0ff; font-size:0.98rem; text-align:center;">Ejemplo: Integración de sistemas y análisis</div>
+        </div>
+        <div class="code-block">
+<pre><code>
+import optimusflow
+
+# Automatización: Cuando llega un pedido, se guarda y se notifica
+@optimusflow.workflow(trigger="pedido_recibido")
+def procesar_pedido(pedido):
+    optimusflow.save_to_db(pedido)
+    optimusflow.send_whatsapp_confirmacion(pedido)
+</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callback-section" id="te-llamamos">
+    <h2>¿Prefieres que te llamemos?</h2>
+    <form class="callback-form" id="callbackForm" autocomplete="off">
+      <input type="tel" name="telefono" placeholder="Tu teléfono" required pattern="[0-9+ ]{7,15}">
+      <button type="submit">Te llamamos</button>
+      <div class="callback-success" id="callbackSuccess">¡Gracias! Te llamaremos lo antes posible.</div>
+    </form>
+    <p>
+      Déjanos tu número y uno de nuestros expertos en automatización te llamará para resolver tus dudas, analizar tus necesidades y explicarte cómo OptimusFlow puede ayudarte a digitalizar y optimizar tus procesos empresariales. Sin compromiso.
+    </p>
+  </div>
+
+  <div class="contact-section" id="contacto">
+    <h2>Contacto</h2>
+    <form id="contactForm" autocomplete="off">
+      <input type="text" name="nombre" placeholder="Tu nombre" required>
+      <input type="text" name="empresa" placeholder="Empresa" required>
+      <input type="email" name="email" placeholder="Tu email" required>
+      <textarea name="mensaje" rows="4" placeholder="¿En qué podemos ayudarte?" required></textarea>
+      <button type="submit">Enviar mensaje</button>
+      <div class="success-message" id="successMessage">¡Gracias! Tu mensaje ha sido enviado.</div>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 OptimusFlow Automation. Todos los derechos reservados.
+    <div class="social-links">
+      <a href="#" title="LinkedIn"><span aria-hidden="true">🔗</span></a>
+      <a href="#" title="Twitter"><span aria-hidden="true">🐦</span></a>
+      <a href="#" title="GitHub"><span aria-hidden="true">💻</span></a>
+    </div>
+  </footer>
+
+  <script>
+    // Animación de scroll suave para el botón CTA
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Simulación de envío de formulario de contacto (solo frontend)
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('successMessage').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('successMessage').style.display = 'none';
+        document.getElementById('contactForm').reset();
+      }, 3500);
+    });
+
+    // Simulación de envío de formulario de te llamamos (solo frontend)
+    document.getElementById('callbackForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('callbackSuccess').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('callbackSuccess').style.display = 'none';
+        document.getElementById('callbackForm').reset();
+      }, 3500);
+    });
+  </script>
+</body>
+</html>
